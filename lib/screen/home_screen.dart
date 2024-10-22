@@ -1,29 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_web_service_praktik/models/product_model.dart';
 
 import '../widgets/action_product.dart';
 import '../widgets/list_product.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
-
-  final List _namesData = [
-    "Afiqi",
-    "Putra",
-    "Afiqi",
-    "Putra",
-    "Afiqi",
-    "Putra",
-    "Afiqi",
-    "Putra",
-    "Afiqi",
-    "Putra",
-    "Afiqi",
-    "Putra",
-    "Afiqi",
-    "Putra",
-    "Afiqi",
-    "Putra"
-  ];
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +14,10 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(children: [
-            const SizedBox(
-              width: 400,
-              height: 312,
-              child: AspectRatio(
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: const AspectRatio(
                 aspectRatio: 3,
                 child: Image(
                   alignment: Alignment.bottomCenter,
@@ -48,28 +30,19 @@ class HomePage extends StatelessWidget {
               bottom: 0,
               child: Container(
                 decoration: const BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      spreadRadius: 5,
-                      color: Colors.black12,
-                      blurStyle: BlurStyle.normal,
-                      blurRadius: 7,
-                    ),
-                  ],
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
                   ),
                 ),
-                width: 400,
+                width: MediaQuery.of(context).size.width,
                 height: 70,
                 child: const ActionProduct(),
               ),
             ),
           ]),
-          const SizedBox(height: 16),
-          ListProduct(namesData: _namesData),
+          ListProduct(listProduct: listProduct)
         ],
       ),
     );

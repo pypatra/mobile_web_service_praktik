@@ -20,7 +20,11 @@ class _NavigasiState extends State<Navigasi> {
     });
   }
 
-  final List _pages = [HomePage(), const ProductPage(), const ProfilePage()];
+  final List _pages = [
+    const HomePage(),
+    const ProductPage(),
+    const ProfilePage()
+  ];
 
   @override
   Widget build(BuildContext context) {

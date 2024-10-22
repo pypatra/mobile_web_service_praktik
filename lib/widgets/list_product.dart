@@ -1,35 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_web_service_praktik/models/product_model.dart';
+import 'package:mobile_web_service_praktik/widgets/product.dart';
 
 class ListProduct extends StatelessWidget {
   const ListProduct({
     super.key,
-    required List namesData,
-  }) : _namesData = namesData;
+    required this.listProduct,
+  });
 
-  final List _namesData;
+  final List<ProductModel> listProduct;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        itemCount: _namesData.length,
+      child: GridView.builder(
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemCount: listProduct.length,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Text(
-              _namesData[index],
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
-            ),
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return const Divider(
-            thickness: 0.5,
-          );
+          return Product(productData: listProduct[index]);
         },
       ),
     );
